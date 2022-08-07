@@ -16,7 +16,7 @@ app.set('view engine','ejs');
 
 
 
-app.post('/', upload.single('photo'), (req, res) => {
+app.post('/', upload.single('photo'), async function(req, res){
     // console.log(req.file); // 查看裡面的屬性
     if (req.file && req.file.originalname) {
         // 判斷是否為圖檔
@@ -25,20 +25,20 @@ app.post('/', upload.single('photo'), (req, res) => {
             fs.rename(req.file.path, './public/img/001.jpg' , error => { });
 
    
-        PythonShell.run('Face_Analyze.py', null, function (err, data) {
+            await PythonShell.run('Face_Analyze.py', null, function(err, data) {
             if (err) throw err;
-            const results = JSON.parse(data)
-            // console.log(results);
+            const  results =  JSON.stringify(data)
+            console.log(results);
           });
     }
          }  else {
             fs.unlink(req.file.path, error => { }); // 刪除暫存檔
         
-            
+    res.render('uploadOne_python',{results});        
     }
     // res.end('image uploaded successful');
 
-    res.render('uploadOne',{results});
+     
 
 });
 

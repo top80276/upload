@@ -29,7 +29,8 @@ print(demography)
 
 
 
-json = json.dumps(demography)
+# json = json.dumps(demography)
 
-print(str(json))
+# print(str(json))
+
 sys.stdout.flush()
