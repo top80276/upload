@@ -6,12 +6,13 @@ from PIL import Image
 import sys 
 import json
 
+# 檔案路徑
 img1_path = './public/img/001.jpg'
-
+# 偵測臉部
 img1 = DeepFace.detectFace(img1_path)
-
+# 分析照片
 Obj =DeepFace.analyze(img_path = img1_path)
-
+# 單獨拉出項目
 demography = DeepFace.analyze(img1_path, ['age', 'gender', 'race', 'emotion'])
 
 

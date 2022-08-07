@@ -24,7 +24,7 @@ app.post('/', upload.single('photo'), async function(req, res){
             // 將檔案搬至公開的資料夾
             fs.rename(req.file.path, './public/img/001.jpg' , error => { });
 
-   
+            // 執行Face_Analyze.py程式並傳回值
             await PythonShell.run('Face_Analyze.py', null, function(err, data) {
             if (err) throw err;
             const  results =  JSON.stringify(data)
@@ -36,7 +36,7 @@ app.post('/', upload.single('photo'), async function(req, res){
         
     res.render('uploadOne_python',{results});        
     }
-    // res.end('image uploaded successful');
+    
 
      
 
