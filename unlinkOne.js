@@ -33,7 +33,8 @@ app.post('/', upload.single('photo'), async function(req, res){
             // 執行Face_Analyze.py程式並傳回值
             PythonShell.run('Face_Analyze.py', null, async function(err, data) {
             if (err) throw err;
-            var results = await JSON.stringify(data)
+            // var results = await JSON.stringify(data)
+            var results = data[8]
             console.log(results);
             res.render('uploadOne_python',{results});   
     
