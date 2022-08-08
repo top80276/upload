@@ -20,13 +20,14 @@ def main():
     demography = DeepFace.analyze(img1_path, ['age', 'gender', 'race', 'emotion'], prog_bar = False)
 
 
-    Obj ={"Age": demography["age"], "Gender":demography["dominant_gender"], "Race":demography["dominant_race"], "Emotion":demography["dominant_emotion"]}
+    # Obj ={"Age": demography["age"], "Gender":demography["dominant_gender"], "Race":demography["dominant_race"], "Emotion":demography["dominant_emotion"]}
+    
 
 
-    # print("Age: ", demography["age"])
-    # print("Gender: ", demography["dominant_gender"])
-    # print("Race: ", demography["dominant_race"])
-    # print("Emotion: ", demography["dominant_emotion"])
+    print("Age: ", demography["age"])
+    print("Gender: ", demography["dominant_gender"])
+    print("Race: ", demography["dominant_race"])
+    print("Emotion: ", demography["dominant_emotion"])
 
     # raw_img1 = Image.open(img1_path)
     # plt.imshow(raw_img1)
@@ -42,7 +43,7 @@ def main():
 
     # sys.stdout.flush()
 
-    return Obj
+    # return Obj
 
 
 
