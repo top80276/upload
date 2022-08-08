@@ -12,7 +12,13 @@ app.set('view engine','ejs');
 
 
 
-
+function sleep(delay) {
+    var start = (new Date()).getTime();
+    while ((new Date()).getTime() - start < delay) {
+        // 使用  continue 实现；
+        continue; 
+    }
+}
 
 
 
@@ -25,20 +31,21 @@ app.post('/', upload.single('photo'), async function(req, res){
             fs.rename(req.file.path, './public/img/001.jpg' , error => { });
 
             // 執行Face_Analyze.py程式並傳回值
-            await PythonShell.run('Face_Analyze.py', null, function(err, data) {
+            PythonShell.run('Face_Analyze.py', null, async function(err, data) {
             if (err) throw err;
-            const  results =  JSON.stringify(data)
+            var results = await JSON.stringify(data)
             console.log(results);
+            res.render('uploadOne_python',{results});   
+    
           });
     }
          }  else {
             fs.unlink(req.file.path, error => { }); // 刪除暫存檔
         
-    res.render('uploadOne_python',{results});        
+                      
     }
     
-
-     
+    
 
 });
 
