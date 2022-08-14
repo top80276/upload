@@ -34,7 +34,7 @@ app.post('/', upload.single('photo'), async function(req, res){
             PythonShell.run('Face_Analyze.py', null, async function(err, data) {
             if (err) throw err;
             // var results = await JSON.stringify(data)
-            var results = data
+            var results = data.slice(-5,-1)
             console.log(results);
             res.render('uploadOne_python',{results});   
     
