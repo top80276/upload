@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
 let { PythonShell } = require('python-shell')
-app.listen(8181);
+// Establishing the port
+const PORT = process.env.PORT || 3000;
+ 
+// Executing the server on given port number
+app.listen(PORT, console.log(
+  `Server started on port ${PORT}`));
+
 
 const multer = require('multer');
 const upload = multer({ dest: "uploads" }); // 設定上傳暫存目錄
