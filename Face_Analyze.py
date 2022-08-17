@@ -8,10 +8,18 @@ from PIL import Image
 import sys 
 import json
 
+import os
+
 
 def main():
     # 檔案路徑
-    img1_path = './public/img/001.jpg'
+    # 取的img內最新建立的照片
+    dir = r"C:\Users\Student\Downloads\upload-main\public\img"
+    file_lists = os.listdir(dir)
+    file_lists.sort(key=lambda fn: os.path.getmtime(dir + "\\" + fn)
+    if not os.path.isdir(dir + "\\" + fn) else 0)
+    file = os.path.join(dir, file_lists[-1])
+    img1_path = file
     # 偵測臉部
     img1 = DeepFace.detectFace(img1_path)
     # 分析照片
@@ -25,7 +33,8 @@ def main():
 
 
     print("Age: ", demography["age"])
-    print("Gender: ", demography["dominant_gender"])
+    # 原本為demography["dominant_gender"])，但我的執行結果沒有這項，改為demography["gender"]
+    print("Gender: ", demography["gender"])
     print("Race: ", demography["dominant_race"])
     print("Emotion: ", demography["dominant_emotion"])
 

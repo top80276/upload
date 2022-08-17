@@ -9,11 +9,26 @@
 <body>
     <form method="post" action="http://localhost:3000/"
     enctype="multipart/form-data">
-        Photo: <input type="file" name="photo" /><br>
-        <input type="submit" value="Upload" />
+        Photo: <input id="faceUrl" type="file" name="photo" /><br>
+        <input class="btn btn-success" type="submit" value="辨識" />
 </form>
 <p>目前資料庫圖片如下:</p>
-<img style="width:200px"  src="http://localhost:3000/img/001.jpg">
+<img id="imageDetected" style="width:200px"  src="http://localhost:3000/img/001.jpg">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+        var arrayBuffer;
+        document.querySelector("#faceUrl").addEventListener("change", function(){
+            var reader = new FileReader();
+            reader.onload = function(){
+                arrayBuffer = this.result;
+                var blob = new Blob([arrayBuffer], {type:"image/jpg|jpeg|png|gif"}); //將arrayBuuffer變成大型二進位物件
+                var urlCreator = window.URL || window.webkitURL;
+                var imageUrl = urlCreator.createObjectURL(blob);
+                $("#imageDetected").attr("src", imageUrl);
+            };
+            reader.readAsArrayBuffer(this.files[0])
+        });
+</script>
 
 </body>
 </html>
