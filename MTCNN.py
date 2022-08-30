@@ -49,34 +49,32 @@ def mtmain():
 
 
    
-   # draw an image with detected objects
+   # 偵測畫box function
    def draw_image_with_boxes(img1_path, result_list):
-      # load the image
+      # 讀取圖片路徑
       data = plt.imread(img1_path)
-      # plot the image
+      # 畫圖
       plt.imshow(data)
-      # get the context for drawing boxes
+
       ax = plt.gca()
-      # plot each box
+      # 畫box
       for result in result_list:
-         # get coordinates
+         # 取得座標和寬高
          x, y, width, height = result['box']
-         # create the shape
+         # 設定box內容
          rect = Rectangle((x, y), width, height, fill=False, color='green')
-         # draw the box
+         # 畫 box
          ax.add_patch(rect)
       # show the plot
       # plt.show()
    
-   # filename = './public/img/mtcnn1.jpg'
-   # load image from fileA
    pixels = plt.imread(img1_path)
-   # create the detector, using default weights
    detector = MTCNN()
-   # detect faces in the image
+   # 偵測人臉
    faces = detector.detect_faces(pixels)
-   # display faces on the original image
+   # 將box 繪製在照片上
    draw_image_with_boxes(img1_path, faces)
+   # 存圖檔
    plt.savefig('./public/img/mtcnn2.jpg')
 
 
@@ -96,6 +94,7 @@ def mtmain():
    gender_output = dict(Counter(sub[gender_key] for sub in objs))
    print(gender_output)
 
+   # 群眾滿意度
    all = gender_output['Man']+gender_output['Woman']
    happy =(emotion_output['happy']/all)*100
    print(f'happiness:{happy}%')
