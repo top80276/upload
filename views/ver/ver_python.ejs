@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" id="ver1"  onsubmit="ver()" enctype="multipart/form-data">
+        Photo: <input type="file" name="photo1"  class="faceUrl"/><br>
+        Photo: <input type="file" name="photo2" class="faceUrl1"/><br>
+        <input type="submit" value="Upload" />
+</form>
+<p>目前圖片如下:</p>
+<img id="imageDetected" style="width:800px"  src="../img/ver3.jpg">
+<p>比對結果如下:</p>
+<p><%= results[0] %></p>
+<p><%= results[1] %></p>
+<p><%= results[2] %></p>
+<p><%= results[3] %></p><br>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+        function ver(){
+        var address = window.location.href;
+        var action_src = address
+        var your_form = document.getElementById('ver1');
+        your_form.action = action_src ;
+    }
+
+    
+</script>
+</body>
+</html>
