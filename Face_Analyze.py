@@ -25,7 +25,7 @@ def main():
 
 
     print("Age: ", demography["age"])
-    print("Gender: ", demography["dominant_gender"])
+    print("Gender: ", demography["gender"])
     print("Race: ", demography["dominant_race"])
     print("Emotion: ", demography["dominant_emotion"])
 

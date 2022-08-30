@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上傳資料</title>
+</head>
+<body>
+    <form method="post" action="http://localhost:3000/analyze1"
+    enctype="multipart/form-data">
+        Photo: <input type="file" name="photo" /><br>
+        <input type="submit" value="Upload" />
+</form>
+<p>目前資料庫圖片如下:</p>
+<img style="width:200px"  src="http://localhost:3000/img/001.jpg">
+
+<!-- <script>
+    var address = window.location.href;
+    document.write("window.location.href = " + address + "</br>");
+
+    </script> -->
+
+</body>
+</html>
