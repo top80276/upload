@@ -1,58 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>人臉比對</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="../css_js/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="../css_js/lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../css_js/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css_js/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css_js/css/style.css" rel="stylesheet">
+    <style>
+  
+        .div110 {
+            margin: 0 auto;
+
+            
+
+        }
+        .div1 {
+            margin: 0px;
+
+        }
+
+    </style>
 </head>
+
 <body>
-    <form method="post" id="ver1"  onsubmit="ver()" enctype="multipart/form-data">
-        Photo: <input type="file" name="photo1"  class="faceUrl"/><br>
-        Photo: <input type="file" name="photo2" class="faceUrl1"/><br>
-        <input type="submit" value="Upload" />
-</form>
-<p>傳2張人臉圖片驗證是否同一人</p>
-<p>分析過程約需5~10秒:</p>
-<img id="imageDetected" style="width:200px"  src="../img/avatar.webp">
-<img id="imageDetected1" style="width:200px"  src="../img/avatar.webp">
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-light position-relative shadow">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+            <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
+                <span class="text-primary">人臉分析應用</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav font-weight-bold mx-auto py-0">
+                    <a href="http://face.hopto.org:3000/" class="nav-item nav-link">Home</a>
+                    <a href="http://face.hopto.org:3000/analyze" class="nav-item nav-link">分析人臉</a>
+                    <a href="http://face.hopto.org:3000/ver" class="nav-item nav-link active">人臉比對</a>
+                    <a href="http://face.hopto.org:3000/mtcnn" class="nav-item nav-link">群眾分析</a>
+                    <a href="http://face.hopto.org:3000/cam" class="nav-item nav-link">打卡登入系統</a>
+
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px">
+            <h3 class="display-3 font-weight-bold text-white">Verification Demo</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0"><a class="text-white" href="">人臉</a></p>
+                <p class="m-0 px-2">/</p>
+                <p class="m-0">比對</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-        var arrayBuffer;
-        
-        document.querySelector(".faceUrl").addEventListener("change", function(){
-            var reader = new FileReader();
-            reader.onload = function(){
-                arrayBuffer = this.result;
-                var blob = new Blob([arrayBuffer], {type:"image/jpg|jpeg|png|gif"}); //將arrayBuuffer變成大型二進位物件
-                var urlCreator = window.URL || window.webkitURL;
-                var imageUrl = urlCreator.createObjectURL(blob);
-                $("#imageDetected").attr("src", imageUrl);
-            };
-            reader.readAsArrayBuffer(this.files[0])
-        });
-        document.querySelector(".faceUrl1").addEventListener("change", function(){
-            var reader = new FileReader();
-            reader.onload = function(){
-                arrayBuffer = this.result;
-                var blob = new Blob([arrayBuffer], {type:"image/jpg|jpeg|png|gif"}); 
-                var urlCreator = window.URL || window.webkitURL;
-                var imageUrl = urlCreator.createObjectURL(blob);
-                $("#imageDetected1").attr("src", imageUrl);
-            };
-            reader.readAsArrayBuffer(this.files[0])
-        });
+    <!-- About Start -->
+    <div class="container-fluid py-1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-5 mb-lg-0" src="../css_js/img/Verification1.jpg" >
+                </div>
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">人臉分析</span></p>
+                    <h1 class="mb-4">比對2人臉是否為同一人</h1>
+                    <p>用VGG-Face模型，將人臉圖轉成2622維度的向量後，分析出人臉的embedding，兩張圖片的向量會有對應的cosine distance，以及對應的閥值，距離在閥值內代表2張照片的特徵夠接近，判定為同一人。</p>
+                    <div class="row pt-2 pb-4">
 
-        function ver(){
-        var address = window.location.href;
-        var action_src = address+"1"
-        var your_form = document.getElementById('ver1');
-        your_form.action = action_src ;
-    }
+                        <div class="col-6 col-md-8">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"></i>使用的模型(VGG-Face)</li>
+                                <li class="py-2 border-bottom"></i>距離(cosine distance)</li>
+                                <li class="py-2 border-bottom"></i>對應罰值(threshold)</li>
+                                <li class="py-2 border-bottom"></i>判定是否為同一人(verified)</li>
+                            </ul>
+                        </div>
+                    </div>
 
-    
-</script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- main Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Verification</span></p>
+                <h1 class="mb-4">上傳2張人臉照片來比對看看吧</h1>
+
+                <div class="div110">
+
+                    <form method="post" id="ver1"  onsubmit="ver()" enctype="multipart/form-data">
+                        上傳想要做分析的人臉照片1: <input type="file" name="photo1"  class="faceUrl"/><br>
+                        上傳想要做分析的人臉照片2: <input type="file" name="photo2" class="faceUrl1"/><br>
+                        <input type="submit" value="Upload" />
+                </form>
+                <p>傳2張人臉圖片驗證是否同一人</p>
+                <p>分析過程約需5~10秒:</p>
+                <img id="imageDetected" style="width:200px"  src="../img/avatar.webp">
+                <img id="imageDetected1" style="width:200px"  src="../img/avatar.webp">
+                
+                
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                <script>
+                        var arrayBuffer;
+                        
+                        document.querySelector(".faceUrl").addEventListener("change", function(){
+                            var reader = new FileReader();
+                            reader.onload = function(){
+                                arrayBuffer = this.result;
+                                var blob = new Blob([arrayBuffer], {type:"image/jpg|jpeg|png|gif"}); //將arrayBuuffer變成大型二進位物件
+                                var urlCreator = window.URL || window.webkitURL;
+                                var imageUrl = urlCreator.createObjectURL(blob);
+                                $("#imageDetected").attr("src", imageUrl);
+                            };
+                            reader.readAsArrayBuffer(this.files[0])
+                        });
+                        document.querySelector(".faceUrl1").addEventListener("change", function(){
+                            var reader = new FileReader();
+                            reader.onload = function(){
+                                arrayBuffer = this.result;
+                                var blob = new Blob([arrayBuffer], {type:"image/jpg|jpeg|png|gif"}); 
+                                var urlCreator = window.URL || window.webkitURL;
+                                var imageUrl = urlCreator.createObjectURL(blob);
+                                $("#imageDetected1").attr("src", imageUrl);
+                            };
+                            reader.readAsArrayBuffer(this.files[0])
+                        });
+                
+                        function ver(){
+                        var address = window.location.href;
+                        var action_src = address+"1"
+                        var your_form = document.getElementById('ver1');
+                        your_form.action = action_src ;
+                    }
+                
+                    
+                </script>
+            
+            </div>    
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" >
+                        <div
+                            class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px;"
+                                href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px;"
+                                href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px;"
+                                href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- main End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
+                    <i class="flaticon-043-teddy-bear"></i>
+                    <span class="text-white">人臉分析應用</span>
+                </a>
+                <p>這網頁是我在資展國際(原資策會)學完後呈現的結果，一個人包辦資料收集、模型建構測試、應用價值分析、群眾人臉分析功能、人臉比對功能、打卡登入系統功能。將相應功能整合前後端，最後放置雲端server主機，呈現在雲端上。</p>
+
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h3 class="text-primary mb-4">Get In Touch</h3>
+                <div class="d-flex">
+                    <h4 class="fa fa-map-marker-alt text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">地址</h5>
+                        <p>新北市新莊區化成路</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <h4 class="fa fa-envelope text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">Email</h5>
+                        <p>top80276@yahoo.com.tw</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <h4 class="fa fa-phone-alt text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">Phone</h5>
+                        <p>0936991022</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h3 class="text-primary mb-4">Quick Links</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/analyze"><i class="fa fa-angle-right mr-2"></i>分析人臉</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/ver"><i class="fa fa-angle-right mr-2"></i>人臉比對</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/mtcnn"><i class="fa fa-angle-right mr-2"></i>群眾分析</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/cam"><i class="fa fa-angle-right mr-2"></i>打卡登入系統</a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>

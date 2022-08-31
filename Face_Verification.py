@@ -40,7 +40,7 @@ def compare():
     resp = DeepFace.verify(img1_path = img1_path, img2_path = img2_path, model_name = model_name)
     print('model',resp["model"])
     print("distance",resp["distance"])
-    print("verified:",resp["threshold"])
+    print("threshold:",resp["threshold"])
     print("verified:",resp["verified"])
     # print(resp)
 

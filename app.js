@@ -134,6 +134,6 @@ app.get('/cam1',function(req,res) {
     var results = data.slice(5,6)
     console.log(results);
 
-  res.render('./cam/cam1',{results});
+  res.render('./cam/cam_python',{results});
 });
 });
