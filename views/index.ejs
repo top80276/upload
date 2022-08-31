@@ -1,16 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主頁</title>
+    <meta charset="utf-8">
+    <title>首頁</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="../css_js/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="../css_js/lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../css_js/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css_js/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css_js/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <a class="btn btn-outline-secondary" href="http://localhost:3000/analyze">分析</a>
-    <a class="btn btn-outline-secondary" href="http://localhost:3000/ver">同一人比對</a>
-    <a class="btn btn-outline-secondary" href="http://localhost:3000/mtcnn">群眾分析</a>
-    <a class="btn btn-outline-secondary" href="http://localhost:3000/cam">打卡註冊系統</a>
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-light position-relative shadow">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+            <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
+                <span class="text-primary">人臉分析應用</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav font-weight-bold mx-auto py-0">
+                    <a href="http://face.hopto.org:3000/" class="nav-item nav-link">Home</a>
+                    <a href="http://face.hopto.org:3000/analyze" class="nav-item nav-link">分析人臉</a>
+                    <a href="http://face.hopto.org:3000/ver" class="nav-item nav-link">人臉比對</a>
+                    <a href="http://face.hopto.org:3000/mtcnn" class="nav-item nav-link active">群眾分析</a>
+                    <a href="http://face.hopto.org:3000/cam" class="nav-item nav-link">打卡登入系統</a>
+
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+        <div class="row align-items-center px-3">
+            <div class="col-lg-6 text-center text-lg-left">
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">李景申 JS Lee</h4>
+                <h1 class="display-3 font-weight-bold text-white">人臉分析應用</h1>
+                <p class="text-white mb-4">這網頁是我在資展國際(原資策會)學完後呈現的結果，資料收集、模型建構測試、應用價值分析、群眾人臉分析功能、人臉比對功能、打卡登入系統功能。將相應功能整合前後端，最後放置雲端server主機，呈現在雲端上。</p>
+
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <img class="img-fluid mt-5" src="css_js/img/faceheard.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Facilities Start -->
+    <div class="container-fluid pt-5">
+        <div class="container pb-3">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>題目發想</h4>
+                            <p class="m-0">一開始看到kaggle比賽中有依人臉照片分析血緣的比賽，依提供之數據集來分析照片血緣分析。覺得很好玩，繼續研究下去分析了一些參考文獻。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>模型選用</h4>
+                            <p class="m-0">依參考文獻的研究，我最後選用 FaceNet、VGGFace模型來做後續的分析。並用MTCMM做多人偵測的模型。
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>工具選用</h4>
+                            <p class="m-0">主要選用python語言，用numpy和pandas整理資料，人臉分析和偵測用了deepface和opencv。網頁呈現使用nodejs整合前端和py檔。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>價值分析1</h4>
+                            <p class="m-0">分析人臉資訊部分可應用於分析表演或演講中分析台下有多少觀眾當下的的滿意比例，及分析受眾的大數年齡及性別。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>價值分析2</h4>
+                            <p class="m-0">照片比對部分，檢測多張照片的人臉特徵距離(1對多)，快速確認是否為同一人，可用於打卡系統或註冊登入系統。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
+                        
+                        <div class="pl-4">
+                            <h4>伺服器主機架設</h4>
+                            <p class="m-0">由於有分析需求，Amazon EC2需要計算的時間太長，目前的雲端server主機為Azurz虛擬主機，其配置vcpu 4 , RAM 16 GiB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Start -->
+
+
+    <!-- Analyze Start -->
+    <div class="container-fluid py-1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-5 mb-lg-0" src="../css_js/img/analyze1.jpg" >
+                </div>
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">人臉分析</span></p>
+                    <h1 class="mb-4">分析人臉的資訊</h1>
+                    <p>用VGG-Face模型，將人臉圖轉成2622維度的向量後，分析出人臉的年齡、性別、人種和情緒。</p>
+                    <div class="row pt-2 pb-4">
+
+                        <div class="col-6 col-md-8">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"></i>年齡(皺紋、皮膚)</li>
+                                <li class="py-2 border-bottom"></i>性別(臉型)</li>
+                                <li class="py-2 border-bottom"></i>人種(膚色)</li>
+                                <li class="py-2 border-bottom"></i>情緒(嘴角、眼角)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Analyze End -->
+
+        <!-- Ver Start -->
+        <div class="container-fluid py-1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <img class="img-fluid rounded mb-5 mb-lg-0" src="../css_js/img/Verification1.jpg" >
+                    </div>
+                    <div class="col-lg-7">
+                        <p class="section-title pr-5"><span class="pr-2">人臉分析</span></p>
+                        <h1 class="mb-4">比對2人臉是否為同一人</h1>
+                        <p>用VGG-Face模型，將人臉圖轉成2622維度的向量後，分析出人臉的embedding，兩張圖片的向量會有對應的cosine distance，以及對應的閥值，距離在閥值內代表2張照片的特徵夠接近，判定為同一人。</p>
+                        <div class="row pt-2 pb-4">
     
+                            <div class="col-6 col-md-8">
+                                <ul class="list-inline m-0">
+                                    <li class="py-2 border-top border-bottom"></i>使用的模型(VGG-Face)</li>
+                                    <li class="py-2 border-bottom"></i>距離(cosine distance)</li>
+                                    <li class="py-2 border-bottom"></i>對應罰值(threshold)</li>
+                                    <li class="py-2 border-bottom"></i>判定是否為同一人(verified)</li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ver End -->
+
+<!-- mtcnn Start -->
+<div class="container-fluid py-1">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <img class="img-fluid rounded mb-5 mb-lg-0" src="../css_js/img/mtcnn1.jpg" >
+            </div>
+            <div class="col-lg-7">
+                <p class="section-title pr-5"><span class="pr-2">群眾分析</span></p>
+                <h1 class="mb-4">群眾分析人臉的資訊</h1>
+                <p>先使用MTCNN人臉偵測模型，將畫面中的人臉一個個偵測出來後，對每個人臉區塊拉出來，在對每個人臉分別作分析，最後統整起來。</p>
+                <div class="row pt-2 pb-4">
+
+                    <div class="col-6 col-md-8">
+                        <ul class="list-inline m-0">
+                            <li class="py-2 border-top border-bottom"></i>情緒統計</li>
+                            <li class="py-2 border-bottom"></i>年齡統計</li>
+                            <li class="py-2 border-bottom"></i>性別統計</li>
+                            <li class="py-2 border-bottom"></i>情緒統計的滿意度(共有多少百分比是開心的)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- mtcnn End -->
+
+<!-- Cam Start -->
+<div class="container-fluid py-1">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <img class="img-fluid rounded mb-5 mb-lg-0" src="../css_js/img/cam1.jpg" >
+            </div>
+            <div class="col-lg-7">
+                <p class="section-title pr-5"><span class="pr-2">打卡登入系統</span></p>
+                <h1 class="mb-4">打卡登入系統的資訊</h1>
+                <p>先將員工的照片儲存後，分析其embedding，參數儲存至.pkl檔，當視訊鏡頭用OPENCV偵測到人臉後，對應embedding，可找出是哪員工，名字和時間紀錄於CSV檔，完成每日打卡或登入紀錄。</p>
+                <div class="row pt-2 pb-4">
+
+                    <div class="col-6 col-md-8">
+                        <ul class="list-inline m-0">
+                            <li class="py-2 border-top border-bottom"></i>找出是哪個人(找出embedding最相近且判定為同一人)</li>
+                            <li class="py-2 border-bottom"></i>對應時間</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cam End -->
+
+
+
+   
+
+
+    
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
+                    <i class="flaticon-043-teddy-bear"></i>
+                    <span class="text-white">人臉分析應用</span>
+                </a>
+                <p>這網頁是我在資展國際(原資策會)學完後呈現的結果，一個人包辦資料收集、模型建構測試、應用價值分析、群眾人臉分析功能、人臉比對功能、打卡登入系統功能。將相應功能整合前後端，最後放置雲端server主機，呈現在雲端上。</p>
+
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h3 class="text-primary mb-4">Get In Touch</h3>
+                <div class="d-flex">
+                    <h4 class="fa fa-map-marker-alt text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">地址</h5>
+                        <p>新北市新莊區化成路</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <h4 class="fa fa-envelope text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">Email</h5>
+                        <p>top80276@yahoo.com.tw</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <h4 class="fa fa-phone-alt text-primary"></h4>
+                    <div class="pl-3">
+                        <h5 class="text-white">Phone</h5>
+                        <p>0936991022</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h3 class="text-primary mb-4">Quick Links</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/analyze"><i class="fa fa-angle-right mr-2"></i>分析人臉</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/ver"><i class="fa fa-angle-right mr-2"></i>人臉比對</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/mtcnn"><i class="fa fa-angle-right mr-2"></i>群眾分析</a>
+                    <a class="text-white mb-2" href="http://face.hopto.org:3000/cam"><i class="fa fa-angle-right mr-2"></i>打卡登入系統</a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
