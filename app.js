@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.set('view engine','ejs');
 
 
-
+// 首頁連接
 app.get('/',(req,res)=>{
     res.render('index');
  });
@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
 
 
 
-
+// 人臉分析
  app.get('/analyze',function(req,res) {
     res.render('./analyze/analyze',{});
 });
@@ -58,7 +58,7 @@ app.post('/analyze1', upload.single('photo'),  function(req, res){
 
 
 
-
+// 人臉比對
 app.get('/ver',function(req,res) {
     res.render('./ver/ver',{});
 });
@@ -87,6 +87,9 @@ app.post('/ver1', upload.fields(files), async function (req, res) { //async
 
 
 
+
+
+// 群眾分析
   app.get('/mtcnn',function(req,res) {
     res.render('./mtcnn/mtcnn',{});
 });
@@ -113,4 +116,24 @@ app.post('/mtcnn1', upload.single('photo'),  function(req, res){
        }  else {
           fs.unlink(req.file.path, error => { }); // 刪除暫存檔                     
   }     
+});
+
+
+
+
+// Webcam
+app.get('/cam',function(req,res) {
+  res.render('./cam/cam',{});
+});
+
+
+app.get('/cam1',function(req,res) {
+  PythonShell.run('Webcamhaar.py', null,  function(err, data) {
+    if (err) throw err;
+    // var results = await JSON.stringify(data)
+    var results = data.slice(5,6)
+    console.log(results);
+
+  res.render('./cam/cam1',{results});
+});
 });
